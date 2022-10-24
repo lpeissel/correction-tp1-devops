@@ -43,7 +43,14 @@ jobs:
           tags:  ${{secrets.DOCKER_HUB_USERNAME}}/correction-tp1-devops/simple-api
 
       - name: Build image and push database
+        uses: docker/build-push-action@v2
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context: ./database
         # DO the same for database
 
       - name: Build image and push httpd
-        # DO the same for httpd
+        uses: docker/build-push-action@v2
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context: ./httpd
