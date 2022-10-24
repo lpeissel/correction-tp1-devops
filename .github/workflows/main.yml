@@ -66,4 +66,4 @@ jobs:
           # Note: tags has to be all lower-case
           tags:  ${{secrets.DOCKER_HUB_USERNAME}}/correction-tp1-devops/simple-api
           # build on feature branches, push only on main branch
-          push: ${{ github.ref == 'refs/heads/main }}
+          #push: ${{ github.ref == 'refs/heads/main }}
