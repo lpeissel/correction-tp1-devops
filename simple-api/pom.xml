@@ -16,7 +16,10 @@
 	<properties>
 		<java.version>11</java.version>
 		<jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
+		<sonar.organization>devops-tp2-sonar</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
+
 
 	<dependencies>
 		<dependency>
@@ -50,6 +53,7 @@
 			<version>1.16.0</version>
 			<scope>test</scope>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.postgresql</groupId>

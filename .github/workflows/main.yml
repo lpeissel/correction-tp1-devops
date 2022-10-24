@@ -21,7 +21,9 @@ jobs:
 
       #finally build your app with the latest command
       - name: Build and test with Maven
-        run: mvn clean verify --file ./simple-api/pom.xml
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=tp2-sonar -Dsonar.organization=devops-tp2-sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./simple-api/pom.xml
 
   # define job to build and publish docker image
   build-and-push-docker-image:
@@ -63,6 +65,20 @@ jobs:
           context: ./httpd
           tags:  ${{secrets.DOCKER_HUB_USERNAME}}/correction-tp1-devops:httpd
           push: ${{ github.ref == 'refs/heads/master' }}
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
 
 
