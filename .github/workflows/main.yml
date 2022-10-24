@@ -54,3 +54,7 @@ jobs:
         with:
           # relative path to the place where source code with Dockerfile is located
           context: ./httpd
+
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
+
