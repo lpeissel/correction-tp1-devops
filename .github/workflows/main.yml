@@ -43,7 +43,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./simple-api
           # Note: tags has to be all lower-case
-          tags:  ${{secrets.DOCKER_HUB_USERNAME}}/correction-tp1-devops/simple-api
+          tags:  ${{secrets.DOCKER_HUB_USERNAME}}/correction-tp1-devops/:simple-api
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
@@ -52,7 +52,7 @@ jobs:
         with:
           # relative path to the place where source code with Dockerfile is located
           context: ./database
-          tags:  ${{secrets.DOCKER_HUB_USERNAME}}/correction-tp1-devops/database
+          tags:  ${{secrets.DOCKER_HUB_USERNAME}}/correction-tp1-devops/:database
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
@@ -61,7 +61,7 @@ jobs:
         with:
           # relative path to the place where source code with Dockerfile is located
           context: ./httpd
-          tags:  ${{secrets.DOCKER_HUB_USERNAME}}/correction-tp1-devops/httpd
+          tags:  ${{secrets.DOCKER_HUB_USERNAME}}/correction-tp1-devops/:httpd
           push: ${{ github.ref == 'refs/heads/main' }}
 
 
