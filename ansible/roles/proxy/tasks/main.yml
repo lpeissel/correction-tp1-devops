@@ -1,0 +1,9 @@
+# tasks file for roles/proxy
+- name: Run httpd
+  docker_container:
+    name: httpd
+    image: lpeissel/correction-tp1-devops:httpd
+    networks:
+      - name: app-network
+    ports:
+      - "80:80"

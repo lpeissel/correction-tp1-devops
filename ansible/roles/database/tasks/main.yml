@@ -1,0 +1,14 @@
+# tasks file for roles/database
+- name: Run database
+  docker_container:
+    name: database
+    image: lpeissel/correction-tp1-devops:database
+    state: started
+    env:
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_USER: usr
+      POSTGRES_DB : db
+    networks:
+      - name: app-network
+    volumes:
+      - database-data:/var/lib/postgresql/data

@@ -1,0 +1,8 @@
+# tasks file for roles/app
+- name: Run simple-api
+  docker_container:
+    name: backend
+    state: started
+    networks :
+      - name: app-network
+    image: lpeissel/correction-tp1-devops:simple-api
